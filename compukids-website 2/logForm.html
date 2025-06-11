@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <p>Welcome, please log in:</p>
+
+  <form id="loginForm">
+    <label for="usernameInput">Username:</label><br />
+    <input type="text" id="usernameInput" required /><br /><br />
+
+    <label for="passwordInput">Password:</label><br />
+    <input type="password" id="passwordInput" required /><br /><br />
+
+    <button type="submit">Log In</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent form from submitting normally
+
+      const username = document.getElementById('usernameInput').value;
+      const password = document.getElementById('passwordInput').value;
+
+      if (checkUserCredentials(username, password)) {
+        document.getElementById('message').textContent = "Correct. You are logging in...";
+      } else {
+        document.getElementById('message').textContent = "Invalid username or password.";
+      }
+    });
+
+    function checkUserCredentials(username, password) {
+      // For demo only. NEVER hardcode credentials in real apps!
+      const SYSTEM_USERNAME = "thabiso";
+      const SYSTEM_PASSWORD = "1234";
+
+      return username === SYSTEM_USERNAME && password === SYSTEM_PASSWORD;
+    }
+  </script>
+</body>
+</html>
